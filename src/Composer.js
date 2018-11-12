@@ -9,6 +9,18 @@ import Color from './Color';
 
 export default class Composer extends React.Component {
 
+  clear () {
+    if (this._input) {
+      if (Platform.OS === 'ios') {
+        this._input.setNativeProps({ text: ' ' });
+      }
+
+      setTimeout(() => {
+        this._input.setNativeProps({ text: '' });
+      },5);
+    }
+  }
+
   onContentSizeChange(e) {
     const { contentSize } = e.nativeEvent;
 
@@ -43,11 +55,11 @@ export default class Composer extends React.Component {
         onChangeText={(text) => this.onChangeText(text)}
         style={[styles.textInput, this.props.textInputStyle, { height: this.props.composerHeight }]}
         autoFocus={this.props.textInputAutoFocus}
-        value={this.props.text}
         enablesReturnKeyAutomatically
         underlineColorAndroid="transparent"
         keyboardAppearance={this.props.keyboardAppearance}
         {...this.props.textInputProps}
+        ref={ref => this._input = ref}
       />
     );
   }
