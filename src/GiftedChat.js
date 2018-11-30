@@ -308,6 +308,7 @@ class GiftedChat extends React.Component {
       <AnimatedView
         style={{
           height: this.state.messagesContainerHeight,
+          ...this.props.messageContainerWrapperStyle,
         }}
       >
         <MessageContainer
@@ -476,7 +477,7 @@ class GiftedChat extends React.Component {
     if (this.state.isInitialized === true) {
       return (
         <ActionSheet ref={(component) => (this._actionSheetRef = component)}>
-          <View style={styles.container} onLayout={this.onMainViewLayout}>
+          <View style={{ flex: 1 }} onLayout={this.onMainViewLayout}>
             {this.renderMessages()}
             {this.renderInputToolbar()}
           </View>
