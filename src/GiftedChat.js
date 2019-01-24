@@ -247,51 +247,59 @@ class GiftedChat extends React.Component {
   }
 
   onKeyboardWillShow(e) {
-    this.setIsTypingDisabled(true);
-    this.setKeyboardHeight(e.endCoordinates ? e.endCoordinates.height : e.end.height);
-    this.setBottomOffset(this.props.bottomOffset);
-    const newMessagesContainerHeight = this.getMessagesContainerHeightWithKeyboard();
-    if (this.props.isAnimated === true) {
-      Animated.timing(this.state.messagesContainerHeight, {
-        toValue: newMessagesContainerHeight,
-        duration: 210,
-      }).start();
-    } else {
-      this.setState({
-        messagesContainerHeight: newMessagesContainerHeight,
-      });
-    }
+    // ********** Disable in favor of outside control **********
+
+    // this.setIsTypingDisabled(true);
+    // this.setKeyboardHeight(e.endCoordinates ? e.endCoordinates.height : e.end.height);
+    // this.setBottomOffset(this.props.bottomOffset);
+    // const newMessagesContainerHeight = this.getMessagesContainerHeightWithKeyboard();
+    // if (this.props.isAnimated === true) {
+    //   Animated.timing(this.state.messagesContainerHeight, {
+    //     toValue: newMessagesContainerHeight,
+    //     duration: 210,
+    //   }).start();
+    // } else {
+    //   this.setState({
+    //     messagesContainerHeight: newMessagesContainerHeight,
+    //   });
+    // }
   }
 
   onKeyboardWillHide() {
-    this.setIsTypingDisabled(true);
-    this.setKeyboardHeight(0);
-    this.setBottomOffset(0);
-    const newMessagesContainerHeight = this.getBasicMessagesContainerHeight();
-    if (this.props.isAnimated === true) {
-      Animated.timing(this.state.messagesContainerHeight, {
-        toValue: newMessagesContainerHeight,
-        duration: 210,
-      }).start();
-    } else {
-      this.setState({
-        messagesContainerHeight: newMessagesContainerHeight,
-      });
-    }
+    // ********** Disable in favor of outside control **********
+
+    // this.setIsTypingDisabled(true);
+    // this.setKeyboardHeight(0);
+    // this.setBottomOffset(0);
+    // const newMessagesContainerHeight = this.getBasicMessagesContainerHeight();
+    // if (this.props.isAnimated === true) {
+    //   Animated.timing(this.state.messagesContainerHeight, {
+    //     toValue: newMessagesContainerHeight,
+    //     duration: 210,
+    //   }).start();
+    // } else {
+    //   this.setState({
+    //     messagesContainerHeight: newMessagesContainerHeight,
+    //   });
+    // }
   }
 
   onKeyboardDidShow(e) {
-    if (Platform.OS === 'android') {
-      this.onKeyboardWillShow(e);
-    }
-    this.setIsTypingDisabled(false);
+    // ********** Disable in favor of outside control **********
+
+    // if (Platform.OS === 'android') {
+    //   this.onKeyboardWillShow(e);
+    // }
+    // this.setIsTypingDisabled(false);
   }
 
   onKeyboardDidHide(e) {
-    if (Platform.OS === 'android') {
-      this.onKeyboardWillHide(e);
-    }
-    this.setIsTypingDisabled(false);
+    // ********** Disable in favor of outside control **********
+
+    // if (Platform.OS === 'android') {
+    //   this.onKeyboardWillHide(e);
+    // }
+    // this.setIsTypingDisabled(false);
   }
 
   scrollToBottom(animated = true) {
@@ -305,12 +313,7 @@ class GiftedChat extends React.Component {
   renderMessages() {
     const AnimatedView = this.props.isAnimated === true ? Animated.View : View;
     return (
-      <AnimatedView
-        style={{
-          height: this.state.messagesContainerHeight,
-          ...this.props.messageContainerWrapperStyle,
-        }}
-      >
+      <View style={{ flex: 1 }}>
         <MessageContainer
           {...this.props}
           invertibleScrollViewProps={this.invertibleScrollViewProps}
@@ -319,7 +322,7 @@ class GiftedChat extends React.Component {
 
         />
         {this.renderChatFooter()}
-      </AnimatedView>
+      </View>
     );
   }
 
@@ -476,12 +479,10 @@ class GiftedChat extends React.Component {
   render() {
     if (this.state.isInitialized === true) {
       return (
-        <ActionSheet ref={(component) => (this._actionSheetRef = component)}>
-          <View style={{ flex: 1 }} onLayout={this.onMainViewLayout}>
-            {this.renderMessages()}
-            {this.renderInputToolbar()}
-          </View>
-        </ActionSheet>
+        <View style={{ flex: 1 }}>
+          {this.renderMessages()}
+          {this.renderInputToolbar()}
+        </View>
       );
     }
     return (
