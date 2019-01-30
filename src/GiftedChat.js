@@ -313,16 +313,18 @@ class GiftedChat extends React.Component {
   renderMessages() {
     const AnimatedView = this.props.isAnimated === true ? Animated.View : View;
     return (
-      <View style={{ flex: 1 }}>
-        <MessageContainer
-          {...this.props}
-          invertibleScrollViewProps={this.invertibleScrollViewProps}
-          messages={this.getMessages()}
-          ref={(component) => (this._messageContainerRef = component)}
+      <ActionSheet ref={(component) => (this._actionSheetRef = component)}>
+        <React.Fragment>
+          <MessageContainer
+            {...this.props}
+            invertibleScrollViewProps={this.invertibleScrollViewProps}
+            messages={this.getMessages()}
+            ref={(component) => (this._messageContainerRef = component)}
 
-        />
-        {this.renderChatFooter()}
-      </View>
+          />
+          {this.renderChatFooter()}
+        </React.Fragment>
+      </ActionSheet>
     );
   }
 
