@@ -174,10 +174,10 @@ const styles = {
       justifyContent: 'flex-end',
     },
     containerToNext: {
-      borderBottomLeftRadius: 3,
+      borderBottomLeftRadius: 0,
     },
     containerToPrevious: {
-      borderTopLeftRadius: 3,
+      borderTopLeftRadius: 0,
     },
   }),
   right: StyleSheet.create({
@@ -193,10 +193,10 @@ const styles = {
       justifyContent: 'flex-end',
     },
     containerToNext: {
-      borderBottomRightRadius: 3,
+      borderBottomRightRadius: 0,
     },
     containerToPrevious: {
-      borderTopRightRadius: 3,
+      borderTopRightRadius: 0,
     },
   }),
   bottom: {
