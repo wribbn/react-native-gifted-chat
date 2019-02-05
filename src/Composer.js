@@ -42,8 +42,10 @@ export default class Composer extends React.Component {
   }
 
   render() {
+    const InputComponent = this.props.inputComponent || TextInput
+
     return (
-      <TextInput
+      <InputComponent
         testID={this.props.placeholder}
         accessible
         accessibilityLabel={this.props.placeholder}
