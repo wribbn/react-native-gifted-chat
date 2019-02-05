@@ -178,6 +178,7 @@ const styles = {
     },
     containerToPrevious: {
       borderTopLeftRadius: 0,
+      marginLeft: 12,
     },
   }),
   right: StyleSheet.create({
