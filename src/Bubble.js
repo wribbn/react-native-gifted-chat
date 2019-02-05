@@ -48,7 +48,7 @@ export default class Bubble extends React.PureComponent {
       isSameDay(this.props.currentMessage, this.props.nextMessage)
     ) {
       return StyleSheet.flatten([
-        styles[this.props.position].containerToNext,
+        (!this.props.nextMessage.data ? styles[this.props.position].containerToNext : {}),
         this.props.containerToNextStyle[this.props.position],
       ]);
     }
@@ -61,7 +61,7 @@ export default class Bubble extends React.PureComponent {
       isSameDay(this.props.currentMessage, this.props.previousMessage)
     ) {
       return StyleSheet.flatten([
-        styles[this.props.position].containerToPrevious,
+        (!this.props.previousMessage.data ? styles[this.props.position].containerToPrevious : { marginLeft: 12 }),
         this.props.containerToPreviousStyle[this.props.position],
       ]);
     }
