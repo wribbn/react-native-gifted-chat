@@ -103,7 +103,7 @@ export default class MessageContainer extends React.PureComponent {
       currentMessage: item,
       previousMessage,
       nextMessage,
-      position: item.user._id === this.props.user._id ? 'right' : 'left',
+      position: item.user && item.user._id === this.props.user._id ? 'right' : 'left',
     };
 
     if (this.props.renderMessage) {
